@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(cors())
 
 app.get('', (req, res) => {
-	res.send('success');
+	res.send(`It's working...`);
 });
 
 app.post('/signin', (req, res) => {
