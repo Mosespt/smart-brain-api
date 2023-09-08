@@ -9,27 +9,26 @@ const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
 
 const db = knex({
+	// connect to your own database here:
 	client: 'pg',
 	connection: {
+<<<<<<< HEAD
 		connectionString: process.env.DATABASE_URL,
 		ssl: {
 			rejectUnauthorized: false
 		}
+=======
+		host : '127.0.0.1',
+		port : 0000,	// Your Postgres PORT
+		user : 'USER',	// Your Postgres USER
+		password : 'PASSWORD',	// Your Postgres USER PASSWORD
+		database : 'YOUR DATABASE'
+>>>>>>> d8f1fa469cb0e8b29787cae3a3c169ff7cf43450
 	}
 });
 
-// console.log(db.select('*')
-//   .from('users'));
-/*
-db.select('*')
-	.from('users')
-	.then(data => {
-		console.log(data);
-	});
-*/
 
 const app = express();
-
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -55,16 +54,6 @@ app.post('/imageurl', (req, res) => {
 	image.handleApiCall(req, res)
 });
 
-app.listen(process.env.PORT || 3001, () => {
-	console.log(`App is running on port ${process.env.PORT}`);
+app.listen(3001, () => {
+	console.log('App is running on port 3001');
 })
-
-/**
- * 
- * --> res = 'This is working'
- * /signIn route --> POST request with success/fail response
- * /register --> POST request for new user
- * /profile/:userId --> GET = user
- * /image --> PUT = user update
- * 
- * */
